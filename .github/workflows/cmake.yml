@@ -39,10 +39,27 @@ jobs:
            make code_coverage
            ./app/shell-app
            ./test/cpp-test
-    - name: npm install, make test-coverage
-      run: |
-        npm install
-        make test-coverage
+    - name: Set Node.js version
+      uses: actions/setup-node@v1
+      with:
+          node-version: ${{ matrix.node }}
+
+    - name: Install npm dependencies
+      run: npm install # switch to `npm ci` when Node.js 6 support is dropped
+
+    - name: Run lint
+      run: npm run lint
+
+    - name: Run tests
+      run: npm run test-cov
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        flag-name: ${{matrix.os}}-node-${{ matrix.node }}
+        parallel: true
+
         
 #     - name: Configure CMake
 #       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
