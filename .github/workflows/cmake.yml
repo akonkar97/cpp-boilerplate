@@ -38,6 +38,10 @@ jobs:
            make
            ./app/shell-app
            ./test/cpp-test
+    - name: npm install, make test-coverage
+      run: |
+        npm install
+        make test-coverage
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
