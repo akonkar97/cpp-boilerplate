@@ -40,7 +40,7 @@ jobs:
            ./app/shell-app
            ./test/cpp-test
     - name: Coveralls
-      run: coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
+      run: coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*" -E ".*vendor/.*.cpp.*" -E ".*vendor/.*.hpp.*"
         
 #     - name: Configure CMake
 #       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
