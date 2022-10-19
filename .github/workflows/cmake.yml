@@ -27,7 +27,7 @@ jobs:
       run: cmake --version
     - name: before install
       run: pip install --user cpp-coveralls
-    - name: install 
+    - name: install opencv
       run: sudo apt-get install -y -qq lcov
     - name: install 
       run: sudo apt-get install -y libeigen3-dev
